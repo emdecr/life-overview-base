@@ -30,7 +30,7 @@ Coming soon.
 
 # Launch
 
-Comming soon.
+Coming soon.
 
 # Feature Roadmap
 
