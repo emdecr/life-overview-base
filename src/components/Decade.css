@@ -1,0 +1,7 @@
+.decade:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.weeks {
+  display: flex;
+  flex-wrap: wrap;
+}

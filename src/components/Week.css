@@ -1,0 +1,90 @@
+.week {
+  margin: 0 2px 4px;
+  min-width: 10px;
+  height: 35px;
+  border: 1px solid rgb(172, 172, 172);
+  position: relative;
+}
+
+.tooltip-available {
+  height: 35px;
+  border-bottom: 4px solid #b3b3b3;
+}
+
+.week:not(.empty) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 8px;
+}
+
+.week:not(.birthday) span {
+  font-size: 0.8rem;
+}
+
+.week.anxiety {
+  background-color: rgb(255, 233, 233);
+}
+
+.week.birthday {
+  background-color: rgb(255, 246, 193);
+}
+
+.week.depression {
+  background-color: rgb(218, 230, 255);
+}
+
+.week:hover {
+  cursor: default;
+}
+
+.week:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tooltip */
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: calc(50% - 125px);
+  background: rgb(71, 71, 71);
+  z-index: 1;
+  font-size: 0.8rem;
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  color: white;
+  transition: opacity 0.5s ease;
+}
+
+.tooltip.small {
+  left: calc(50% - 35px);
+  width: 70px;
+  text-align: center;
+}
+
+.tooltip::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgb(71, 71, 71) transparent;
+}
+
+.tooltip img {
+  max-width: 230px;
+  height: auto;
+}
+
+.tooltip figure {
+  margin: 0;
+}
