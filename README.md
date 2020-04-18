@@ -84,7 +84,7 @@ Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [`s
 
 ## Today Indicator
 
-Its placement is calculated with `weeksBetween` from a helper function in `src/helpers/index.js`.
+Its placement is calculated with `weeksBetween` from a helper function in [`src/helpers/index.js`](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js).
 You'll need to replace `start` with your own birthday/start date.
 
 ## Weeks with custom background colours
