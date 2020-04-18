@@ -78,7 +78,7 @@ It's looks like this:
 `week` is calculated by my API, and is how many weeks there are from my birthday to the date of the single record.
 
 If you don't want to rely on an API for your content, you can make a static JSON file your source?
-Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [src/json/records.json](https://github.com/emdecr/life-overview-base/blob/master/src/json/records.json).
+Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [`src/json/records.json`](https://github.com/emdecr/life-overview-base/blob/master/src/json/records.json).
 You can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to calculate the values for `week`.
 
 ## Today Indicator
@@ -88,7 +88,7 @@ You'll need to replace `start` with your own birthday/start date.
 
 ## Weeks with custom background colours
 
-In <a href="https://emilydelacruz.com/life-overview" target="_blank">my project</a> I have several `Week.js` components that have a different background colour to highlight specific moments/periods. In this base project, there's a few weeks that have a red background. It's pulling from `exampleBackground`, a helper function in [src/helpers/index.js](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js). It checks against the Week.js component's `weekId` prop, and if it matches any values in the array found in `exampleBackground`, that week gets a specific background colour (`.week.example-background` selector found in Week.css). Again, you can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to find the correct number.
+In <a href="https://emilydelacruz.com/life-overview" target="_blank">my project</a> I have several `Week.js` components that have a different background colour to highlight specific moments/periods. In this base project, there's a few weeks that have a red background. It's pulling from `exampleBackground`, a helper function in [`src/helpers/index.js`](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js). It checks against the Week.js component's `weekId` prop, and if it matches any values in the array found in `exampleBackground`, that week gets a specific background colour (`.week.example-background` selector found in Week.css). Again, you can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to find the correct number.
 
 # Feature Roadmap
 
