@@ -53,8 +53,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Content
 
 The components are being filled with data from a single array full of objects.
-In <a href="https://emilydelacruz.com/life-overview" target="_blank">my own project</a> I've created an endpoint that brings back an array with specifically formatted objects.
-Each object has a `week`, `date`, `title` and `content` property.
+In <a href="https://emilydelacruz.com/life-overview" target="_blank">my own project</a> I've created an endpoint that brings back an array with specifically formatted objects. Each object has `week`, `date`, `title` and `content` keys.
 
 It's looks like this:
 
@@ -89,7 +88,7 @@ You'll need to replace `start` with your own birthday/start date.
 
 ## Weeks with custom background colours
 
-In <a href="https://emilydelacruz.com/life-overview" target="_blank">my project</a> I have several `Week.js` components that have a different background colour to highlight specific moments/periods. In this base project, there's a few weeks that have a red background. It's pulling from `exampleBackground`, a helper function in [`src/helpers/index.js`](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js). It checks against the Week.js component's `weekId` prop, and if it matches any values in the array found in `exampleBackground`, that week gets a specific background colour (`.week.example-background` selector found in `Week.css`). Again, you can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to find the correct number.
+In <a href="https://emilydelacruz.com/life-overview" target="_blank">my project</a> I have several `Week.js` components that have a different background colour to highlight specific moments/periods. In this base project, there's a few weeks that have a red background. It's pulling from `exampleBackground`, a helper function in [`src/helpers/index.js`](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js). It checks against the `Week.js` component's `weekId` prop, and if it matches any values in the array found in `exampleBackground`, that week gets a specific background colour (`.week.example-background` selector found in `Week.css`). Again, you can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to find the correct number.
 
 # Feature Roadmap
 
