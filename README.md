@@ -86,7 +86,7 @@ Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [`s
 Its placement is calculated with `weeksBetween` from a helper function in [`src/helpers/index.js`](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js).
 You'll need to replace `start` with your own birthday/start date.
 
-## Where else you need to change things...
+### Where else you need to change date things...
 
 `startYear` in [`src/components/WeekBirthday.js`](https://github.com/emdecr/life-overview-base/blob/master/src/components/WeekBirthday.js) needs to be changed to the year of whatever your birth/start date year is.
 
