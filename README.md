@@ -52,8 +52,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Content
 
-The week are being filled with data from a single array full of objects.
-In my own project I've created an endpoint that brings back an array specifically formatted objects.
+The components are being filled with data from a single array full of objects.
+In <a href="https://emilydelacruz.com/life-overview" target="_blank">my own project</a> I've created an endpoint that brings back an array with specifically formatted objects.
 Each object has a `week`, `date`, `title` and `content` property.
 
 It's looks like this:
@@ -77,9 +77,10 @@ It's looks like this:
 
 `week` is calculated by my API, and is how many weeks there are from my birthday to the date of the single record.
 
-If you don't want to rely on an API for your content, you can make a static JSON file your source?
-Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [`src/json/records.json`](https://github.com/emdecr/life-overview-base/blob/master/src/json/records.json).
-You can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to calculate the values for `week`.
+In the future, I'm hoping to make this more flexible...
+
+If you don't want to rely on an API for your content, you can make a static JSON file your source.
+Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [`src/json/records.json`](https://github.com/emdecr/life-overview-base/blob/master/src/json/records.json). You can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to calculate the values for `week`.
 
 ## Today Indicator
 
