@@ -22,29 +22,13 @@ Author: Emily Dela Cruz
 
 _**What is this? Why does it exist?**_
 
-I was inspired by <a href="https://busterbenson.com/the-life-of/buster/" target="_blank">Buster Benson's project</a> and decided to whip up a version using React. This is a project template repo that is the bones of what powers <a href="https://emilydelacruz.com/life-overview" target="_blank">the version on my live site</a>.
+I was inspired by <a href="https://busterbenson.com/the-life-of/buster/" target="_blank">Buster Benson's project</a> and decided to create a version with React. This repo is the bones of what powers <a href="https://emilydelacruz.com/life-overview" target="_blank">the live version on my site</a>.
+
+Fire up your own copy, and let me know how it goes!
 
 # Setup
 
-Coming soon.
-
-# Launch
-
-Coming soon.
-
-# Feature Roadmap
-
-- Create different views
-  - Public
-  - Auth-protected (show more details)
-
-# Credits
-
-Badges in this README.md provided by [shields.io](https://shields.io/#your-badge).
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
 
 In the project directory, you can run:
 
@@ -56,11 +40,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
@@ -70,3 +49,57 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Content
+
+The week are being filled with data from a single array full of objects.
+In my own project I've created an endpoint that brings back an array specifically formatted objects.
+Each object has a `week`, `date`, `title` and `content` property.
+
+It's looks like this:
+
+```json
+[
+  {
+    "week": 1,
+    "date": "April 15, 2020",
+    "title": "Example Heading 1",
+    "content": "This is the content"
+  },
+  {
+    "week": 5,
+    "date": "May 20, 2020",
+    "title": "Example Heading 2",
+    "content": "This is the content"
+  }
+]
+```
+
+`week` is calculated by my API, and is how many weeks there are from my birthday to the date of the single record.
+
+If you don't want to rely on an API for your content, you can make a static JSON file your source?
+Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [src/json/records.json](https://github.com/emdecr/life-overview-base/blob/master/src/json/records.json).
+You can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to calculate the values for `week`.
+
+## Today Indicator
+
+Its placement is calculated with `weeksBetween` from a helper function in `src/helpers/index.js`.
+You'll need to replace `start` with your own birthday/start date.
+
+## Weeks with custom background colours
+
+In <a href="https://emilydelacruz.com/life-overview" target="_blank">my project</a> I have several `Week.js` components that have a different background colour to highlight specific moments/periods. In this base project, there's a few weeks that have a red background. It's pulling from `exampleBackground`, a helper function in [src/helpers/index.js](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js). It checks against the Week.js component's `weekId` prop, and if it matches any values in the array found in `exampleBackground`, that week gets a specific background colour (`.week.example-background` selector found in Week.css). Again, you can use a tool like [this one](https://www.timeanddate.com/date/weeknumber.html) to find the correct number.
+
+# Feature Roadmap
+
+- Create a formatted array of objects from a different API's response array
+  - ie. No need to pull from an array with a specfic response
+- Create different views
+  - Public
+  - Auth-protected (show more details)
+
+# Credits
+
+Thank you to <a href="https://busterbenson.com/" taarget="_blank">Buster Benson</a> for sharing his work publicly.
+
+Badges in this README.md provided by [shields.io](https://shields.io/#your-badge).

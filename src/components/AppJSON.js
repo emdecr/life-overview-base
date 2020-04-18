@@ -1,22 +1,10 @@
 import React from "react";
 import "./App.css";
 import Overview from "./Overview";
-import content from "../apis/content";
+let exampleJSON = require("../json/records.json");
 
 class App extends React.Component {
-  state = { records: [] };
-
-  componentDidMount() {
-    this.getRecords();
-  }
-
-  getRecords = async () => {
-    const response = await content.get("/5e9a4143330000fcc87b2fa5");
-    const data = response.data;
-    this.setState({
-      records: data
-    });
-  };
+  state = { records: exampleJSON };
 
   render() {
     return (

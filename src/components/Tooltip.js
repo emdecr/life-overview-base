@@ -1,10 +1,6 @@
 import React from "react";
 
-const Tooltip = ({ year, htmlContent, date }) => {
-  let descriptionHTML = function() {
-    return { __html: htmlContent };
-  };
-
+const Tooltip = ({ year, content, date }) => {
   if (year) {
     return (
       <React.Fragment>
@@ -25,10 +21,9 @@ const Tooltip = ({ year, htmlContent, date }) => {
         <p>
           <strong>{date}</strong>
         </p>
-        <div
-          className="tooltip__content"
-          dangerouslySetInnerHTML={descriptionHTML()}
-        ></div>
+        <div className="tooltip__content">
+          <p>{content}</p>
+        </div>
       </div>
     </React.Fragment>
   );

@@ -1,10 +1,14 @@
 import React from "react";
 import WeekBirthday from "./WeekBirthday";
 import WeekFilled from "./WeekFilled";
+import WeekToday from "./WeekToday";
 import "./Week.css";
-import { exampleBackgroundCheck, getClassesString } from "../helpers";
+import { exampleBackground, getClassesString, weeksBetween } from "../helpers";
 
 const Week = ({ records, weekId, decadeId }) => {
+  const exampleBackgroundCheck = exampleBackground(weekId) ? true : false;
+  const todayWeek = weeksBetween(new Date());
+  const todayCheck = weekId === todayWeek ? true : false;
   const getRecords = id => {
     const matches = records.filter(r => {
       return r.week === id;
@@ -46,6 +50,10 @@ const Week = ({ records, weekId, decadeId }) => {
           weekId={weekId}
         />
       );
+    }
+
+    if (todayCheck) {
+      return <WeekToday />;
     }
 
     return <div className={classesString} id={`week-${weekId}`}></div>;

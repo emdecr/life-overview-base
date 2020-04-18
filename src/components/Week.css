@@ -23,16 +23,20 @@
   font-size: 0.8rem;
 }
 
-.week.anxiety {
-  background-color: rgb(255, 233, 233);
-}
-
 .week.birthday {
   background-color: rgb(255, 246, 193);
 }
 
-.week.depression {
-  background-color: rgb(218, 230, 255);
+.week.example-background {
+  background-color: red;
+}
+
+.week.today {
+  background: #505050;
+}
+
+.week.today > span {
+  color: white;
 }
 
 .week:hover {

@@ -3,7 +3,7 @@ import Tooltip from "./Tooltip";
 import { getClassesString } from "../helpers";
 
 const WeekFilled = ({ weekId, records, exampleBackgroundCheck }) => {
-  const weekData = records[0];
+  const [weekData] = records;
   const tooltipCheck = weekData.content ? true : false;
   const classesString = getClassesString(
     false,
@@ -13,18 +13,15 @@ const WeekFilled = ({ weekId, records, exampleBackgroundCheck }) => {
 
   let tooltip = function(c) {
     if (c.content) {
-      return <Tooltip htmlContent={c.content} date={c.date} />;
+      return <Tooltip content={c.content} date={c.date} />;
     }
     return null;
   };
 
   if (weekData.title.indexOf("<") !== -1) {
-    let headingHTML = function() {
-      return { __html: weekData.title };
-    };
     return (
       <div className={classesString} id={`week-${weekId}`}>
-        <span dangerouslySetInnerHTML={headingHTML()}></span>
+        <span>{weekData.title}</span>
         {tooltip(weekData)}
       </div>
     );
