@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   getRecords = async () => {
-    const response = await content.get("/5e9a55bc33000058cb7b2fe3");
+    const response = await content.get("/5ea1edaa31000027631eeedc");
     const data = response.data;
     this.setState({
       records: data

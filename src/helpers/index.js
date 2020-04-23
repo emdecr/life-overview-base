@@ -21,7 +21,7 @@ export const getClassesString = (empty, example, tooltip) => {
 };
 
 export const weeksBetween = date => {
-  // User your birthday/state date here
+  // User your birthday/start date here
   const start = new Date(2004, 1, 13);
   return Math.round((date - start) / (7 * 24 * 60 * 60 * 1000));
 };
