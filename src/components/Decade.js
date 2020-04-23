@@ -11,7 +11,7 @@ const Decade = ({ records, decadeId, heading }) => {
       weeksArr.push(
         <Week
           records={records}
-          weekId={weekId}
+          weekId={i}
           decadeId={decadeId}
           key={`week-key-${i}`}
         />

@@ -20,7 +20,7 @@
 }
 
 .week:not(.birthday) span {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
 .week.birthday {
@@ -46,49 +46,4 @@
 .week:hover .tooltip {
   opacity: 1;
   visibility: visible;
-}
-
-/* Tooltip */
-
-.tooltip {
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  top: calc(100% + 10px);
-  left: calc(50% - 125px);
-  background: rgb(71, 71, 71);
-  z-index: 1;
-  font-size: 0.8rem;
-  width: 250px;
-  padding: 10px;
-  border: 1px solid #e3e3e3;
-  border-radius: 5px;
-  color: white;
-  transition: opacity 0.5s ease;
-}
-
-.tooltip.small {
-  left: calc(50% - 35px);
-  width: 70px;
-  text-align: center;
-}
-
-.tooltip::after {
-  content: " ";
-  position: absolute;
-  bottom: 100%; /* At the top of the tooltip */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent rgb(71, 71, 71) transparent;
-}
-
-.tooltip img {
-  max-width: 230px;
-  height: auto;
-}
-
-.tooltip figure {
-  margin: 0;
 }

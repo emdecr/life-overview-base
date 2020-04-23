@@ -7,7 +7,7 @@ const WeekToday = ({ weekId }) => {
   return (
     <div className="week today" id={`week-${weekId}`}>
       <span>Today</span>
-      <Tooltip content={today} />
+      <Tooltip date={today} />
     </div>
   );
 };
