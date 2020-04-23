@@ -8,8 +8,6 @@ const Decade = ({ records, decadeId, heading }) => {
     const finish = start + 520;
     const weeksArr = [];
     for (let i = start; i < finish; i++) {
-      // NTS: Check why I need to minus 3 from week numbers....
-      const weekId = i > 6 ? i - 3 : i;
       weeksArr.push(
         <Week
           records={records}
