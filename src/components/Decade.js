@@ -4,14 +4,16 @@ import "./Decade.css";
 
 const Decade = ({ records, decadeId, heading }) => {
   const weeks = () => {
-    let start = decadeId * 520;
-    let finish = start + 520;
-    let weeksArr = [];
+    const start = decadeId * 520;
+    const finish = start + 520;
+    const weeksArr = [];
+    // NTS: Check why I need to minus 3 from week numbers....
+    const weekId = i > 6 ? i - 3 : i;
     for (let i = start; i < finish; i++) {
       weeksArr.push(
         <Week
           records={records}
-          weekId={i}
+          weekId={weekId}
           decadeId={decadeId}
           key={`week-key-${i}`}
         />
