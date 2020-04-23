@@ -30,7 +30,13 @@ Fire up your own copy, and let me know how it goes!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+_Note_: I've set a _*homepage*_ property in `package.json`, but feel free to ditch that if you're serving this project at the root domain. OR you can replace `http://mywebsite.com/life-overview-base` with whatever domain and subdirectory/sub route you need 🤙
+
 In the project directory, you can run:
+
+### `npm install`
+
+Installs all the dependencies. Do this before running any other commands.
 
 ### `npm start`
 
@@ -92,7 +98,7 @@ You'll need to replace `start` with your own birthday/start date.
 
 ## Weeks with custom background colours
 
-In <a href="https://emilydelacruz.com/life-overview" target="_blank">my project</a> I have several `Week.js` components that have a different background colour to highlight specific moments/periods. In this base project, there's a few weeks that have a red background. It's pulling from `exampleBackground`, a helper function in [`src/helpers/index.js`](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js). It checks against the `Week.js` component's `weekId` prop, and if it matches any values in the array found in `exampleBackground`, that week gets a specific background colour (`.week.example-background` selector found in `Week.css`). Again, you can use a tool like [this one](https://www.timeanddate.com/date/duration.html) to find the correct number.
+In <a href="https://emilydelacruz.com/life-overview" target="_blank">my project</a> I have several `Week.js` components that have a different background colour to highlight specific moments/periods. In this base project, there's a few weeks that have a red background. It's pulling from `exampleBackground`, a helper function in [`src/helpers/index.js`](https://github.com/emdecr/life-overview-base/blob/master/src/helpers/index.js). It checks against the `Week.js` component's `weekId` prop, and if it matches any values in the array found in `exampleBackground`, that `Week.js` gets a class added to its `classesString` (`.week.example-background` selector found in `Week.css`). Again, you can use a tool like [this one](https://www.timeanddate.com/date/duration.html) to find the correct number.
 
 # Feature Roadmap
 
