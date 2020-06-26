@@ -7,7 +7,7 @@
 <p align="center"><em>A bird's-eye view.</em></p>
 
 <p align="center">
-    <a href="https://github.com/emdecr/edc/releases">
+    <a href="https://github.com/emdecr/life-overview-base/releases">
         <img src="https://img.shields.io/badge/release-v1.0-blue.svg" alt="release badge version 1.0">
     </a>
     <a href="https://emilydelacruz.com">
@@ -22,15 +22,17 @@ Author: Emily Dela Cruz
 
 _**What is this? Why does it exist?**_
 
-I was inspired by <a href="https://busterbenson.com/the-life-of/buster/" target="_blank">Buster Benson's project</a> and decided to create a version with React. This repo is the bones of what powers <a href="https://emilydelacruz.com/life-overview" target="_blank">the live version on my site</a>.
+I was directly inspired by <a href="https://busterbenson.com/the-life-of/buster/" target="_blank">Buster Benson's project</a> and decided to create a version with React. This repo is the bones of what powers <a href="https://emilydelacruz.com/life-overview" target="_blank">the live version on my site</a>.
 
 Fire up your own copy, and let me know how it goes!
+
+<a href="https://emilydelacruz.com/life-overview-base" target="_blank">Live demo</a>
 
 # Setup
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-_Note_: I've set a _*homepage*_ property in `package.json`, but feel free to ditch that if you're serving this project at the root domain. OR you can replace `http://mywebsite.com/life-overview-base` with whatever domain and subdirectory/sub route you need 🤙
+_Note_: I've set a _*homepage*_ property in `package.json`, but feel free to ditch that if you're serving this project at the root domain. OR you can replace `http://mywebsite.com/life-overview-base` with whatever domain and subdirectory/sub-route you need 🤙
 
 In the project directory, you can run:
 
@@ -58,8 +60,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Content
 
-The components are being filled with data from a single array full of objects.
-In <a href="https://emilydelacruz.com/life-overview" target="_blank">my own project</a> I've created an endpoint that brings back an array with specifically formatted objects. Each object has `week`, `date`, `title` and `content` keys.
+Data from an array full of objects fills the `Week` components with content. In <a href="https://emilydelacruz.com/life-overview" target="_blank">my own project</a> I've created an endpoint that pulls from my WordPress CMS. It brings back an array with specifically formatted objects. Each object has `week`, `date`, `title` and `content` keys.
 
 It's looks like this:
 
@@ -76,7 +77,8 @@ It's looks like this:
     "date": "May 20, 2020",
     "title": "Example Heading 2",
     "content": "This is the content"
-  }
+  },
+  {...}
 ]
 ```
 
@@ -84,8 +86,7 @@ It's looks like this:
 
 In the future, I'm hoping to make this more flexible...
 
-If you don't want to rely on an API for your content, you can make a static JSON file your source.
-Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [`src/json/records.json`](https://github.com/emdecr/life-overview-base/blob/master/src/json/records.json). You can use a tool like [this one](https://www.timeanddate.com/date/duration.html) to calculate the values for `week`.
+If you don't want to rely on an API for your content, you can make a static JSON file your source. Delete `App.js` and rename `AppJSON.js` to `App.js`. `AppJSON.js` pulls from [`src/json/records.json`](https://github.com/emdecr/life-overview-base/blob/master/src/json/records.json). You can use a tool like [this one](https://www.timeanddate.com/date/duration.html) to calculate the values for `week`.
 
 ## Today Indicator
 
