@@ -1,0 +1,18 @@
+/* =============================================================================
+ * Decade Styles
+ * =============================================================================
+ * A "decade" is a row in the grid representing 10 years (520 weeks).
+ * It contains a heading ("20s", "30s", etc.) and a flex-wrapped grid of weeks.
+ * ============================================================================= */
+
+/* Each decade section — adds spacing between decades */
+.decade:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+/* The flex container that holds all 520 week cells.
+   flex-wrap makes weeks flow into multiple rows within the decade. */
+.weeks {
+  display: flex;
+  flex-wrap: wrap;
+}

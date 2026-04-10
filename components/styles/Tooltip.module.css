@@ -1,0 +1,104 @@
+/* =============================================================================
+ * Tooltip Styles
+ * =============================================================================
+ * Tooltips appear below week cells on hover. They show details about
+ * the record (date, content, tags) or just the year for birthday weeks.
+ *
+ * The tooltip is always rendered in the DOM but hidden via opacity/visibility.
+ * On hover, the PARENT .week cell makes the tooltip visible via:
+ *   .week:hover .tooltip { opacity: 1; visibility: visible; }
+ * (This rule lives in Week.module.css — but because CSS Modules scope
+ *  class names, we use :global() in Week.module.css for the hover rule.)
+ *
+ * Three size variants:
+ *   - Default (250px) → records with content
+ *   - .small (70px)   → birthday year only
+ *   - .today (100px)  → today's date only
+ * ============================================================================= */
+
+/* Base tooltip — hidden by default, positioned below the week cell */
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: calc(100% + 15px);       /* 15px gap below the week cell */
+  left: calc(50% - 135px);      /* Centered: half of 250px width + offset */
+  background: rgb(71, 71, 71);
+  z-index: 5;                   /* Above other week cells */
+  font-size: 0.8rem;
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  color: white;
+  transition: opacity 0.5s ease; /* Smooth fade in/out */
+}
+
+/* Small variant — for birthday year tooltips ("2024") */
+.small {
+  left: calc(50% - 45px);
+  width: 70px;
+  text-align: center;
+}
+
+/* Today variant — for the current date tooltip ("Apr 10, 2026") */
+.today {
+  left: calc(50% - 60px);
+  width: 100px;
+  text-align: center;
+}
+
+/* Arrow pointer — CSS triangle trick using borders.
+   Creates a small upward-pointing arrow connecting the tooltip to the week cell. */
+.tooltip::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;                  /* Positioned at the very top of the tooltip */
+  left: 50%;
+  margin-left: -8px;            /* Center the 16px-wide arrow */
+  border-width: 8px;
+  border-style: solid;
+  /* Only the bottom border is colored — this creates an upward triangle */
+  border-color: transparent transparent rgb(71, 71, 71) transparent;
+}
+
+/* Tooltip indicator dot — a small dot that appears on hoverable weeks
+   to hint that there's more info available */
+.indicator {
+  /* Currently unstyled — can be used if a visual dot indicator is desired */
+}
+
+/* Content area inside the tooltip — for longer descriptions */
+.content {
+  margin-top: 0.5rem;
+}
+
+/* Tag badges — small colored pills shown in tooltips for tagged records */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Mobile responsive — shrink tooltips on small screens */
+@media only screen and (max-width: 600px) {
+  .tooltip {
+    left: calc(50% - 85px);
+    width: 150px;
+    padding: 10px;
+  }
+  .small,
+  .today {
+    padding: 10px;
+  }
+}

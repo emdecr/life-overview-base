@@ -1,0 +1,11 @@
+/* =============================================================================
+ * Overview Styles
+ * =============================================================================
+ * The Overview component is the outermost container for the week grid.
+ * Currently minimal — the layout is primarily handled by Decade and Week styles.
+ * ============================================================================= */
+
+.overview {
+  /* Container for all decade rows. Currently no special styling needed,
+     but the class is here as a hook for future layout changes. */
+}

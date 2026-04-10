@@ -1,0 +1,86 @@
+/* =============================================================================
+ * Week Cell Styles
+ * =============================================================================
+ * Each week of life is rendered as a small rectangular cell.
+ * The grid contains ~5,720 of these cells (110 years × 52 weeks).
+ *
+ * Week cells have different visual states:
+ *   - .empty          → tiny gray-bordered box (most weeks)
+ *   - .birthday       → yellow background (every 52nd week)
+ *   - .today          → dark gray with white text (current week)
+ *   - .exampleBackground → red (demo/example weeks 300-304)
+ *   - .tooltipAvailable  → bottom border accent (has hover content)
+ *   - .tagged         → left border colored by tag (grouped weeks)
+ * ============================================================================= */
+
+/* Base week cell — all weeks get this */
+.week {
+  margin: 0 2px 4px;
+  min-width: 10px;
+  height: 35px;
+  border: 1px solid rgb(172, 172, 172);
+  position: relative; /* Needed for tooltip absolute positioning */
+}
+
+/* Weeks with content get a thicker bottom border as a visual hint
+   that there's a tooltip available on hover */
+.tooltipAvailable {
+  height: 35px;
+  border-bottom: 4px solid #b3b3b3;
+}
+
+/* Non-empty weeks use flexbox to center their text content */
+.week:not(.empty) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 8px;
+}
+
+/* Text size for non-birthday weeks (keeps the grid compact) */
+.week:not(.birthday) span {
+  font-size: 0.85rem;
+}
+
+/* Birthday weeks — soft yellow to mark each year of life */
+.birthday {
+  background-color: rgb(255, 246, 193);
+}
+
+/* Example/demo weeks — bright red to show how filled weeks look */
+.exampleBackground {
+  background-color: red;
+}
+
+/* Today's week — dark background with white text to stand out */
+.today {
+  background: #505050;
+}
+.today > span {
+  color: white;
+}
+
+/* Tagged weeks — a colored left border to visually group related weeks.
+   The actual color is set inline via style={{ borderLeftColor: ... }}
+   based on the tag value. */
+.tagged {
+  border-left: 3px solid currentColor;
+}
+
+/* Default cursor on hover (no pointer since these aren't clickable) */
+.week:hover {
+  cursor: default;
+}
+
+/* Show tooltip on hover.
+   We use :global() here because the .tooltip class comes from Tooltip.module.css,
+   which gives it a different scoped name. :global() tells CSS Modules to match
+   the actual class name we apply in the Tooltip component.
+
+   NOTE: For this to work, the Tooltip component must add a second "global"
+   className like "tooltip-hover-target" that we reference here. */
+.week:hover :global(.tooltip-hover-target) {
+  opacity: 1;
+  visibility: visible;
+}
