@@ -1,0 +1,30 @@
+/* =============================================================================
+ * Global Styles
+ * =============================================================================
+ * These styles apply to the entire app. Component-specific styles live in
+ * CSS Modules (*.module.css) alongside each component.
+ * ============================================================================= */
+
+/* Reset: remove default browser margins/padding for a clean baseline */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Main container — centers content and limits width.
+   Ported from the original App.css */
+.container {
+  max-width: calc(900px + 4rem);
+  margin: 0 auto;
+  padding: 2rem;
+}
