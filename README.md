@@ -1,8 +1,4 @@
-<h1 align="center">
-    <a href="https://emilydelacruz.com" target="_blank"><img src="https://emilydelacruz.com/files/connection.png" alt="atom graphic" width="80"></a>
-    <br>
-    Life Overview
-</h1>
+<h1 align="center">Life Overview</h1>
 
 <p align="center"><em>A bird's-eye view.</em></p>
 
