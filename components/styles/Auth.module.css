@@ -1,0 +1,108 @@
+/* =============================================================================
+ * Auth & Form Styles
+ * =============================================================================
+ * Shared styles for authentication-related components:
+ *   - LoginForm (login page form fields and submit button)
+ *   - AuthButton (login link and logout button in the header)
+ *   - Login page layout (max-width container, subtitle)
+ *   - Home page header row (title + auth button flex layout)
+ * ============================================================================= */
+
+/* --- Login Page Layout --- */
+
+/* Constrains the login form to a comfortable reading width */
+.loginContainer {
+  max-width: 400px;
+}
+
+/* Subtitle text below the login page heading */
+.subtitle {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+/* --- Home Page Header --- */
+
+/* Flex row for the page title + auth button */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* --- Form Fields (shared between email and password inputs) --- */
+
+/* Wrapper around each label + input pair */
+.formField {
+  margin-bottom: 1rem;
+}
+
+/* Form labels above inputs */
+.label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+/* Text inputs for email and password */
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* --- Submit Button --- */
+
+.submitButton {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #505050;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* --- Error Message --- */
+
+.errorMessage {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* --- AuthButton (header login/logout) --- */
+
+/* "Login" link when user is not authenticated */
+.loginLink {
+  font-size: 0.85rem;
+  color: #666;
+  text-decoration: underline;
+}
+
+/* Container for the logged-in state (email + logout button) */
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* User's email address display */
+.userEmail {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* "Logout" button */
+.logoutButton {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #666;
+}

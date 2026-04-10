@@ -13,6 +13,7 @@
  */
 
 import { format } from "date-fns";
+import clsx from "clsx";
 import Tooltip from "./Tooltip";
 import weekStyles from "./styles/Week.module.css";
 import type { WeekTodayProps } from "@/lib/types";
@@ -22,7 +23,7 @@ export default function WeekToday({ weekId }: WeekTodayProps) {
   const today = format(new Date(), "MMM d, yyyy");
 
   return (
-    <div className={`${weekStyles.week} ${weekStyles.today}`} id={`week-${weekId}`}>
+    <div className={clsx(weekStyles.week, weekStyles.today)} id={`week-${weekId}`}>
       {/* "Today" label visible inside the week cell */}
       <span>Today</span>
 

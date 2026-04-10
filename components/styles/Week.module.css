@@ -23,9 +23,9 @@
 }
 
 /* Weeks with content get a thicker bottom border as a visual hint
-   that there's a tooltip available on hover */
+   that there's a tooltip available on hover.
+   Height is inherited from .week (always applied alongside this class). */
 .tooltipAvailable {
-  height: 35px;
   border-bottom: 4px solid #b3b3b3;
 }
 

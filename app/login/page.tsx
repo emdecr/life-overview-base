@@ -8,15 +8,16 @@
  */
 
 import LoginForm from "@/components/LoginForm";
+import styles from "@/components/styles/Auth.module.css";
 
 // Tell Next.js to never statically pre-render this page
 export const dynamic = "force-dynamic";
 
 export default function LoginPage() {
   return (
-    <main className="container" style={{ maxWidth: "400px" }}>
+    <main className={`container ${styles.loginContainer}`}>
       <h1>Login</h1>
-      <p style={{ marginBottom: "1.5rem", color: "#666" }}>
+      <p className={styles.subtitle}>
         Sign in to view private life records.
       </p>
       <LoginForm />

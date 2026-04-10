@@ -62,12 +62,6 @@
   border-color: transparent transparent rgb(71, 71, 71) transparent;
 }
 
-/* Tooltip indicator dot — a small dot that appears on hoverable weeks
-   to hint that there's more info available */
-.indicator {
-  /* Currently unstyled — can be used if a visual dot indicator is desired */
-}
-
 /* Content area inside the tooltip — for longer descriptions */
 .content {
   margin-top: 0.5rem;

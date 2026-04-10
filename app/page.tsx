@@ -22,6 +22,7 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import Overview from "@/components/Overview";
 import AuthButton from "@/components/AuthButton";
+import styles from "@/components/styles/Auth.module.css";
 import type { LifeRecord } from "@/lib/types";
 
 // Render on every request — don't cache, because auth state varies per user
@@ -59,14 +60,7 @@ export default async function Page() {
   return (
     <main className="container">
       {/* Header row: title + auth button */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "1rem",
-        }}
-      >
+      <div className={styles.headerRow}>
         <h1>Life Overview</h1>
         {/* AuthButton is a Client Component — checks auth state in the browser
             and shows Login link or Logout button accordingly */}

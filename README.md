@@ -1,26 +1,13 @@
-<h1 align="center">Life Overview</h1>
+# Life Overview
+_A bird's-eye view._
 
-<p align="center"><em>A bird's-eye view.</em></p>
-
-<p align="center">
-    <a href="https://github.com/emdecr/life-overview-base/releases">
-        <img src="https://img.shields.io/badge/release-v2.0-blue.svg" alt="release badge version 2.0">
-    </a>
-    <a href="https://emilydelacruz.com">
-        <img src="https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%EF%B8%8E%20by-emdecr-red.svg" alt="emdecr badge">
-    </a>
-    
-</p>
-
-# Intro
-
-Author: Emily Dela Cruz
+## Intro
 
 I was directly inspired by <a href="https://busterbenson.com/the-life-of/buster/" target="_blank">Buster Benson's project</a> and decided to create my own version. Each square in the grid represents one week of your life, organized into decades. Fill in the weeks that matter to you and see your life at a glance.
 
 This repo is the bones of what powers <a href="https://emilydelacruz.com/life-overview" target="_blank">the live version on my site</a>.
 
-# Tech Stack
+## Tech Stack
 
 - **Next.js 15** (App Router) with **React 19**
 - **TypeScript**
@@ -28,7 +15,7 @@ This repo is the bones of what powers <a href="https://emilydelacruz.com/life-ov
 - **date-fns** for date formatting
 - **CSS Modules** for component-scoped styles
 
-# Setup
+## Setup
 
 ### 1. Install dependencies
 
@@ -64,7 +51,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Builds the app for production. The output goes to the `.next` folder.
 
-# Content
+## Content
 
 Records are stored in a Supabase `life_overview_records` table. Each record ties an event to a specific week of your life:
 
@@ -88,7 +75,7 @@ Records are stored in a Supabase `life_overview_records` table. Each record ties
 | `tags` | Array of strings for grouping/styling weeks (e.g. `["travel"]`). Tagged weeks get a colored left border. |
 | `public` | If `false`, the record is only visible when logged in. |
 
-## Authentication
+### Authentication
 
 Some records can be marked as private (`public: false`). These are hidden from anonymous visitors and only appear when you're logged in.
 
@@ -98,19 +85,19 @@ Some records can be marked as private (`public: false`). These are hidden from a
 
 To create a login, go to your Supabase dashboard > Authentication > Add user.
 
-## Today Indicator
+### Today Indicator
 
 The current week is highlighted automatically based on `NEXT_PUBLIC_BIRTH_DATE` in your `.env.local`. No code changes needed.
 
-## Tagged Weeks
+### Tagged Weeks
 
 Records with `tags` get a colored left border on their week cell. The tag-to-color mapping lives in `components/WeekFilled.tsx` (`TAG_COLORS`). Add or change colors there as needed.
 
-## Example Weeks
+### Example Weeks
 
 Weeks 300-304 have a red background by default as a demo. This is controlled by `isExampleWeek()` in `lib/helpers.ts` — remove or modify the set of IDs there.
 
-# Project Structure
+## Project Structure
 
 ```
 app/                    # Next.js App Router pages
@@ -137,8 +124,6 @@ middleware.ts           # Auth session refresh on every request
 seed/records.sql        # Database schema + seed data
 ```
 
-# Credits
+## Credits
 
 Thank you to <a href="https://busterbenson.com/" target="_blank">Buster Benson</a> for sharing his work publicly and inspiring this project.
-
-Badges in this README.md provided by [shields.io](https://shields.io/#your-badge).

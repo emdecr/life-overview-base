@@ -24,8 +24,7 @@
 import { useMemo } from "react";
 import Week from "./Week";
 import { weeksBetween, BIRTH_YEAR } from "@/lib/helpers";
-import type { WeekGridProps } from "@/lib/types";
-import type { LifeRecord } from "@/lib/types";
+import type { WeekGridProps, LifeRecord } from "@/lib/types";
 
 export default function WeekGrid({
   decadeId,

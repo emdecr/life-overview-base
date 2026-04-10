@@ -21,6 +21,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import styles from "./styles/Auth.module.css";
 import type { User } from "@supabase/supabase-js";
 
 export default function AuthButton() {
@@ -62,14 +63,7 @@ export default function AuthButton() {
   // Not logged in — show a login link
   if (!user) {
     return (
-      <a
-        href="/login"
-        style={{
-          fontSize: "0.85rem",
-          color: "#666",
-          textDecoration: "underline",
-        }}
-      >
+      <a href="/login" className={styles.loginLink}>
         Login
       </a>
     );
@@ -77,20 +71,9 @@ export default function AuthButton() {
 
   // Logged in — show email + logout button
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-      <span style={{ fontSize: "0.85rem", color: "#666" }}>{user.email}</span>
-      <button
-        onClick={handleLogout}
-        style={{
-          fontSize: "0.85rem",
-          padding: "0.25rem 0.5rem",
-          backgroundColor: "transparent",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-          cursor: "pointer",
-          color: "#666",
-        }}
-      >
+    <div className={styles.userInfo}>
+      <span className={styles.userEmail}>{user.email}</span>
+      <button onClick={handleLogout} className={styles.logoutButton}>
         Logout
       </button>
     </div>

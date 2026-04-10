@@ -15,6 +15,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import styles from "./styles/Auth.module.css";
 
 export default function LoginForm() {
   // Form state — tracks what the user types
@@ -67,11 +68,8 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleLogin}>
       {/* Email field */}
-      <div style={{ marginBottom: "1rem" }}>
-        <label
-          htmlFor="email"
-          style={{ display: "block", marginBottom: "0.25rem", fontWeight: 500 }}
-        >
+      <div className={styles.formField}>
+        <label htmlFor="email" className={styles.label}>
           Email
         </label>
         <input
@@ -81,22 +79,13 @@ export default function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           placeholder="you@example.com"
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            fontSize: "1rem",
-          }}
+          className={styles.input}
         />
       </div>
 
       {/* Password field */}
-      <div style={{ marginBottom: "1rem" }}>
-        <label
-          htmlFor="password"
-          style={{ display: "block", marginBottom: "0.25rem", fontWeight: 500 }}
-        >
+      <div className={styles.formField}>
+        <label htmlFor="password" className={styles.label}>
           Password
         </label>
         <input
@@ -106,35 +95,19 @@ export default function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
           placeholder="Your password"
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            fontSize: "1rem",
-          }}
+          className={styles.input}
         />
       </div>
 
       {/* Error message — only shown when login fails */}
-      {error && (
-        <p style={{ color: "red", marginBottom: "1rem", fontSize: "0.9rem" }}>
-          {error}
-        </p>
-      )}
+      {error && <p className={styles.errorMessage}>{error}</p>}
 
-      {/* Submit button */}
+      {/* Submit button — cursor and opacity are dynamic based on loading state */}
       <button
         type="submit"
         disabled={loading}
+        className={styles.submitButton}
         style={{
-          width: "100%",
-          padding: "0.6rem",
-          backgroundColor: "#505050",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          fontSize: "1rem",
           cursor: loading ? "not-allowed" : "pointer",
           opacity: loading ? 0.7 : 1,
         }}

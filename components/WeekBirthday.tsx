@@ -11,6 +11,7 @@
  * (parsed in lib/helpers.ts), replacing the old hardcoded `startYear = 2004`.
  */
 
+import clsx from "clsx";
 import Tooltip from "./Tooltip";
 import weekStyles from "./styles/Week.module.css";
 import type { WeekBirthdayProps } from "@/lib/types";
@@ -35,7 +36,7 @@ export default function WeekBirthday({
   const id = hasRecords ? `birthday-${weekId}` : `week-${weekId}`;
 
   return (
-    <div className={`${weekStyles.week} ${weekStyles.birthday}`} id={id}>
+    <div className={clsx(weekStyles.week, weekStyles.birthday)} id={id}>
       <span>
         {/* Show "1 year old" vs "X years old" (singular/plural) */}
         {`${yearsOld} ${yearsOld === 1 ? "year old" : "years old"}`}
