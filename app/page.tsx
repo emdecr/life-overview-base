@@ -1,28 +1,80 @@
 /**
- * Home Page (Server Component)
+ * Home Page — Server Component
  *
- * This is the main entry point — it replaces the old App.js class component.
- * As a Server Component, it can fetch data directly from Supabase at render time
- * without needing useEffect, loading states, or client-side fetching.
+ * This replaces the old App.js class component. Instead of:
+ *   - componentDidMount → useEffect → axios.get → setState
  *
- * The Supabase RLS (Row Level Security) policies automatically filter records:
- * - Unauthenticated visitors only see records where `public = true`
- * - Authenticated users see all records
+ * We simply `await` the Supabase query directly in the component body.
+ * This is possible because Server Components can be async functions.
+ * The data is fetched on the server at request time and sent to the
+ * client as pre-rendered HTML — no loading spinners needed.
  *
- * `dynamic = "force-dynamic"` prevents static pre-rendering, which would fail
- * because the Supabase client needs runtime environment variables.
+ * HOW AUTH + RLS WORKS HERE:
+ *   The Supabase server client reads the user's JWT from cookies.
+ *   - If no JWT (anonymous visitor) → RLS returns only `public = true` records
+ *   - If valid JWT (logged-in user) → RLS returns ALL records
+ *   We don't need any if/else logic — the database handles it automatically.
  *
- * This is a placeholder — components will be added in Phase 3.
+ * `dynamic = "force-dynamic"` ensures this page is rendered fresh on every
+ * request (not cached), so auth state is always current.
  */
 
-// Tell Next.js to always render this page at request time (not at build time)
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import Overview from "@/components/Overview";
+import AuthButton from "@/components/AuthButton";
+import type { LifeRecord } from "@/lib/types";
+
+// Render on every request — don't cache, because auth state varies per user
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
+  // Create a server-side Supabase client (reads JWT from cookies)
+  const supabase = await createSupabaseServerClient();
+
+  // Fetch records from the `records` table, ordered by week number.
+  // RLS policies automatically filter based on the user's auth state:
+  //   - Anonymous → only public records
+  //   - Authenticated → all records
+  const { data: records, error } = await supabase
+    .from("records")
+    .select("*")
+    .order("week", { ascending: true });
+
+  // If Supabase returns an error, show it (helpful during development)
+  if (error) {
+    return (
+      <main className="container">
+        <h1>Life Overview</h1>
+        <p style={{ color: "red" }}>
+          Error loading records: {error.message}
+        </p>
+        <p style={{ color: "#666", fontSize: "0.9rem" }}>
+          Make sure your Supabase URL and anon key are set in .env.local,
+          and the records table exists (run seed/records.sql).
+        </p>
+      </main>
+    );
+  }
+
   return (
     <main className="container">
-      <h1>Life Overview</h1>
-      <p>Phase 1 & 2 complete — components coming in Phase 3.</p>
+      {/* Header row: title + auth button */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "1rem",
+        }}
+      >
+        <h1>Life Overview</h1>
+        {/* AuthButton is a Client Component — checks auth state in the browser
+            and shows Login link or Logout button accordingly */}
+        <AuthButton />
+      </div>
+
+      {/* The main week grid — 11 decades of 520 weeks each */}
+      <Overview records={(records as LifeRecord[]) ?? []} />
     </main>
   );
 }
