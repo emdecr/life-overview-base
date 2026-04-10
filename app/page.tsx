@@ -31,12 +31,12 @@ export default async function Page() {
   // Create a server-side Supabase client (reads JWT from cookies)
   const supabase = await createSupabaseServerClient();
 
-  // Fetch records from the `records` table, ordered by week number.
+  // Fetch records from the `life_overview_records` table, ordered by week number.
   // RLS policies automatically filter based on the user's auth state:
   //   - Anonymous → only public records
   //   - Authenticated → all records
   const { data: records, error } = await supabase
-    .from("records")
+    .from("life_overview_records")
     .select("*")
     .order("week", { ascending: true });
 
@@ -50,7 +50,7 @@ export default async function Page() {
         </p>
         <p style={{ color: "#666", fontSize: "0.9rem" }}>
           Make sure your Supabase URL and anon key are set in .env.local,
-          and the records table exists (run seed/records.sql).
+          and the life_overview_records table exists (run seed/records.sql).
         </p>
       </main>
     );

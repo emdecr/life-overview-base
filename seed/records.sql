@@ -1,13 +1,13 @@
 -- =============================================================================
 -- Life Overview: Supabase Table Schema
 -- =============================================================================
--- This creates the `records` table that stores life events/milestones.
+-- This creates the `life_overview_records` table that stores life events/milestones.
 -- Each record corresponds to a specific week of life and is displayed
 -- as a highlighted cell in the "Life in Weeks" grid.
 -- =============================================================================
 
--- The main records table
-CREATE TABLE records (
+-- The main table for life records
+CREATE TABLE life_overview_records (
   -- Auto-incrementing primary key
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 
@@ -39,7 +39,7 @@ CREATE TABLE records (
 -- Index on the `week` column for fast lookups.
 -- The app filters records by week ID for each of ~5,720 week cells,
 -- so this index is important for performance.
-CREATE INDEX idx_records_week ON records (week);
+CREATE INDEX idx_life_overview_records_week ON life_overview_records (week);
 
 -- =============================================================================
 -- Row Level Security (RLS)
@@ -50,29 +50,29 @@ CREATE INDEX idx_records_week ON records (week);
 --   2. Authenticated users can read ALL records (public + private)
 -- =============================================================================
 
-ALTER TABLE records ENABLE ROW LEVEL SECURITY;
+ALTER TABLE life_overview_records ENABLE ROW LEVEL SECURITY;
 
 -- Policy 1: Public records are visible to everyone (no login needed)
 CREATE POLICY "Public records are visible to all"
-  ON records
+  ON life_overview_records
   FOR SELECT
   USING (public = true);
 
 -- Policy 2: Authenticated users bypass the public filter and see everything
 CREATE POLICY "Authenticated users can read all records"
-  ON records
+  ON life_overview_records
   FOR SELECT
   TO authenticated
   USING (true);
 
 -- =============================================================================
--- Seed Data (matches the original records.json sample data)
+-- Seed Data
 -- =============================================================================
 -- These are example records to verify the app works.
 -- Replace with your own life events!
 -- =============================================================================
 
-INSERT INTO records (week, date, title, content, tags, public) VALUES
+INSERT INTO life_overview_records (week, date, title, content, tags, public) VALUES
   (1,   'April 15, 2020',  'Example Heading 1', 'This is the content',  '{"example"}', true),
   (5,   'May 20, 2020',    'Example Heading 2', 'This is the content',  '{"example"}', true),
   (51,  'Date',            'Example Heading 3', 'This is the content',  '{}',          true),

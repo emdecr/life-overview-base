@@ -10,7 +10,7 @@
 // =============================================================================
 
 /**
- * A single life record from the Supabase `records` table.
+ * A single life record from the Supabase `life_overview_records` table.
  *
  * Each record represents a notable event or period tied to a specific
  * week of the user's life. The `week` field is a 0-based index:

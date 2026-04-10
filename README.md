@@ -38,7 +38,7 @@ npm install
 
 ### 2. Set up Supabase
 
-Create a project at [supabase.com](https://supabase.com), then run the SQL in `seed/records.sql` in your Supabase SQL Editor. This creates the `records` table with Row Level Security policies.
+Run the SQL in `seed/records.sql` in your Supabase project's SQL Editor. This creates the `life_overview_records` table with Row Level Security policies. Works fine alongside existing tables.
 
 ### 3. Configure environment variables
 
@@ -66,7 +66,7 @@ Builds the app for production. The output goes to the `.next` folder.
 
 # Content
 
-Records are stored in a Supabase `records` table. Each record ties an event to a specific week of your life:
+Records are stored in a Supabase `life_overview_records` table. Each record ties an event to a specific week of your life:
 
 ```json
 {
