@@ -3,9 +3,12 @@
  * =============================================================================
  * Shared styles for authentication-related components:
  *   - LoginForm (login page form fields and submit button)
- *   - AuthButton (login link and logout button in the header)
+ *   - AuthButton (logout button in the header)
  *   - Login page layout (max-width container, subtitle)
  *   - Home page header row (title + auth button flex layout)
+ *
+ * All colors reference CSS custom properties from globals.css
+ * so they automatically adapt to light/dark theme.
  * ============================================================================= */
 
 /* --- Login Page Layout --- */
@@ -18,12 +21,12 @@
 /* Subtitle text below the login page heading */
 .subtitle {
   margin-bottom: 1.5rem;
-  color: #666;
+  color: var(--color-text-muted);
 }
 
 /* --- Home Page Header --- */
 
-/* Flex row for the page title + auth button */
+/* Flex row for the page title + auth button + theme toggle */
 .headerRow {
   display: flex;
   justify-content: space-between;
@@ -49,9 +52,11 @@
 .input {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-input-border);
   border-radius: 4px;
   font-size: 1rem;
+  background-color: var(--color-input-bg);
+  color: var(--color-text);
 }
 
 /* --- Submit Button --- */
@@ -59,8 +64,8 @@
 .submitButton {
   width: 100%;
   padding: 0.6rem;
-  background-color: #505050;
-  color: white;
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -69,19 +74,12 @@
 /* --- Error Message --- */
 
 .errorMessage {
-  color: red;
+  color: var(--color-error);
   margin-bottom: 1rem;
   font-size: 0.9rem;
 }
 
-/* --- AuthButton (header login/logout) --- */
-
-/* "Login" link when user is not authenticated */
-.loginLink {
-  font-size: 0.85rem;
-  color: #666;
-  text-decoration: underline;
-}
+/* --- AuthButton (header logout) --- */
 
 /* Container for the logged-in state (email + logout button) */
 .userInfo {
@@ -93,16 +91,16 @@
 /* User's email address display */
 .userEmail {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--color-text-muted);
 }
 
 /* "Logout" button */
 .logoutButton {
   font-size: 0.85rem;
   padding: 0.25rem 0.5rem;
-  background-color: transparent;
-  border: 1px solid #ccc;
+  background-color: var(--color-logout-bg);
+  border: 1px solid var(--color-logout-border);
   border-radius: 4px;
   cursor: pointer;
-  color: #666;
+  color: var(--color-text-muted);
 }

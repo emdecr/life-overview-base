@@ -22,6 +22,7 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import Overview from "@/components/Overview";
 import AuthButton from "@/components/AuthButton";
+import ThemeToggle from "@/components/ThemeToggle";
 import styles from "@/components/styles/Auth.module.css";
 import type { LifeRecord } from "@/lib/types";
 
@@ -62,9 +63,10 @@ export default async function Page() {
       {/* Header row: title + auth button */}
       <div className={styles.headerRow}>
         <h1>Life Overview</h1>
-        {/* AuthButton is a Client Component — checks auth state in the browser
-            and shows Login link or Logout button accordingly */}
-        <AuthButton />
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+          <ThemeToggle />
+          <AuthButton />
+        </div>
       </div>
 
       {/* The main week grid — 11 decades of 520 weeks each */}

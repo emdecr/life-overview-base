@@ -3,7 +3,70 @@
  * =============================================================================
  * These styles apply to the entire app. Component-specific styles live in
  * CSS Modules (*.module.css) alongside each component.
+ *
+ * THEMING: All colors are defined as CSS custom properties (variables) on :root.
+ * Dark mode overrides live under [data-theme="dark"].
+ * The ThemeToggle component sets data-theme on <html>.
  * ============================================================================= */
+
+/* --- Light theme (default) --- */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #333333;
+  --color-text-muted: #666666;
+  --color-border: rgb(172, 172, 172);
+  --color-border-light: #ccc;
+  --color-border-accent: #b3b3b3;
+
+  /* Week cell colors */
+  --color-week-past: rgb(232, 232, 232);
+  --color-week-birthday: rgb(255, 246, 193);
+  --color-week-today-bg: #505050;
+  --color-week-today-text: #ffffff;
+
+  /* Tooltip */
+  --color-tooltip-bg: rgb(71, 71, 71);
+  --color-tooltip-border: #e3e3e3;
+  --color-tooltip-text: #ffffff;
+  --color-tooltip-tag-bg: rgba(255, 255, 255, 0.2);
+
+  /* Auth / forms */
+  --color-input-bg: #ffffff;
+  --color-input-border: #ccc;
+  --color-button-bg: #505050;
+  --color-button-text: #ffffff;
+  --color-error: #e74c3c;
+  --color-logout-border: #ccc;
+  --color-logout-bg: transparent;
+}
+
+/* --- Dark theme --- */
+[data-theme="dark"] {
+  --color-bg: #1a1a1a;
+  --color-text: #e0e0e0;
+  --color-text-muted: #999999;
+  --color-border: #444444;
+  --color-border-light: #555555;
+  --color-border-accent: #666666;
+
+  --color-week-past: #2a2a2a;
+  --color-week-birthday: rgb(80, 70, 30);
+  --color-week-today-bg: #e0e0e0;
+  --color-week-today-text: #1a1a1a;
+
+  --color-tooltip-bg: #333333;
+  --color-tooltip-border: #555555;
+  --color-tooltip-text: #e0e0e0;
+  --color-tooltip-tag-bg: rgba(255, 255, 255, 0.15);
+
+  --color-input-bg: #2a2a2a;
+  --color-input-border: #555555;
+  --color-button-bg: #e0e0e0;
+  --color-button-text: #1a1a1a;
+  --color-error: #ff6b6b;
+  --color-logout-border: #555555;
+  --color-logout-bg: transparent;
+}
 
 /* Reset: remove default browser margins/padding for a clean baseline */
 *,
@@ -18,7 +81,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
-  color: #333;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Main container — centers content and limits width.

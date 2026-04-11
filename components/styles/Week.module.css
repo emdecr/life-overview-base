@@ -4,10 +4,14 @@
  * Each week of life is rendered as a small rectangular cell.
  * The grid contains ~5,720 of these cells (110 years × 52 weeks).
  *
+ * All colors reference CSS custom properties from globals.css
+ * so they automatically adapt to light/dark theme.
+ *
  * Week cells have different visual states:
- *   - .empty          → tiny gray-bordered box (most weeks)
- *   - .birthday       → yellow background (every 52nd week)
- *   - .today          → dark gray with white text (current week)
+ *   - .empty          → tiny bordered box (most weeks)
+ *   - .past           → light fill for empty past weeks
+ *   - .birthday       → yellow/amber background (every birthday)
+ *   - .today          → inverted colors (current week)
  *   - .exampleBackground → red (demo/example weeks 300-304)
  *   - .tooltipAvailable  → bottom border accent (has hover content)
  *   - .tagged         → left border colored by tag (grouped weeks)
@@ -18,7 +22,7 @@
   margin: 0 2px 4px;
   min-width: 10px;
   height: 35px;
-  border: 1px solid rgb(172, 172, 172);
+  border: 1px solid var(--color-border);
   position: relative; /* Needed for tooltip absolute positioning */
 }
 
@@ -26,7 +30,7 @@
    that there's a tooltip available on hover.
    Height is inherited from .week (always applied alongside this class). */
 .tooltipAvailable {
-  border-bottom: 4px solid #b3b3b3;
+  border-bottom: 4px solid var(--color-border-accent);
 }
 
 /* Non-empty weeks use flexbox to center their text content */
@@ -43,14 +47,14 @@
   font-size: 0.85rem;
 }
 
-/* Birthday weeks — soft yellow to mark each year of life */
+/* Birthday weeks — soft yellow/amber to mark each year of life */
 .birthday {
-  background-color: rgb(255, 246, 193);
+  background-color: var(--color-week-birthday);
 }
 
-/* Empty weeks in the past — light gray fill to distinguish from the future */
+/* Empty weeks in the past — light fill to distinguish from the future */
 .past {
-  background-color: rgb(232, 232, 232);
+  background-color: var(--color-week-past);
 }
 
 /* Example/demo weeks — bright red to show how filled weeks look */
@@ -58,12 +62,12 @@
   background-color: red;
 }
 
-/* Today's week — dark background with white text to stand out */
+/* Today's week — inverted colors to stand out */
 .today {
-  background: #505050;
+  background: var(--color-week-today-bg);
 }
 .today > span {
-  color: white;
+  color: var(--color-week-today-text);
 }
 
 /* Tagged weeks — a colored left border to visually group related weeks.

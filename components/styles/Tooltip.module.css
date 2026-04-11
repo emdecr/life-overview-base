@@ -4,11 +4,8 @@
  * Tooltips appear below week cells on hover. They show details about
  * the record (date, content, tags) or just the year for birthday weeks.
  *
- * The tooltip is always rendered in the DOM but hidden via opacity/visibility.
- * On hover, the PARENT .week cell makes the tooltip visible via:
- *   .week:hover .tooltip { opacity: 1; visibility: visible; }
- * (This rule lives in Week.module.css — but because CSS Modules scope
- *  class names, we use :global() in Week.module.css for the hover rule.)
+ * All colors reference CSS custom properties from globals.css
+ * so they automatically adapt to light/dark theme.
  *
  * Three size variants:
  *   - Default (250px) → records with content
@@ -23,14 +20,14 @@
   position: absolute;
   top: calc(100% + 15px);       /* 15px gap below the week cell */
   left: calc(50% - 135px);      /* Centered: half of 250px width + offset */
-  background: rgb(71, 71, 71);
+  background: var(--color-tooltip-bg);
   z-index: 5;                   /* Above other week cells */
   font-size: 0.8rem;
   width: 250px;
   padding: 10px;
-  border: 1px solid #e3e3e3;
+  border: 1px solid var(--color-tooltip-border);
   border-radius: 5px;
-  color: white;
+  color: var(--color-tooltip-text);
   transition: opacity 0.5s ease; /* Smooth fade in/out */
 }
 
@@ -59,7 +56,7 @@
   border-width: 8px;
   border-style: solid;
   /* Only the bottom border is colored — this creates an upward triangle */
-  border-color: transparent transparent rgb(71, 71, 71) transparent;
+  border-color: transparent transparent var(--color-tooltip-bg) transparent;
 }
 
 /* Content area inside the tooltip — for longer descriptions */
@@ -80,8 +77,8 @@
   padding: 0.1rem 0.4rem;
   border-radius: 3px;
   font-size: 0.7rem;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
+  background: var(--color-tooltip-tag-bg);
+  color: var(--color-tooltip-text);
 }
 
 /* Mobile responsive — shrink tooltips on small screens */
