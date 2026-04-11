@@ -21,7 +21,7 @@
 export interface LifeRecord {
   id: number;
   week: number;
-  date: string;          // Human-readable date, e.g. "April 15, 2020"
+  date: string | null;   // Human-readable date, e.g. "April 15, 2020" — used to compute week
   title: string;         // Short label shown on the week cell
   content: string | null; // Longer description shown in tooltip (optional)
   tags: string[];        // Tags for grouping/styling, e.g. ["travel", "milestone"]

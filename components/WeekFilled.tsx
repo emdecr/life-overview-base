@@ -72,7 +72,7 @@ export default function WeekFilled({
       {hasTooltip && (
         <Tooltip
           content={weekData.content}
-          date={weekData.date}
+          date={weekData.date ?? undefined}
           tags={weekData.tags}
         />
       )}

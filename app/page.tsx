@@ -20,6 +20,7 @@
  */
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { resolveRecordWeeks } from "@/lib/helpers";
 import Overview from "@/components/Overview";
 import AuthButton from "@/components/AuthButton";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -69,8 +70,10 @@ export default async function Page() {
         </div>
       </div>
 
+      <p style={{ marginBottom: "2rem" }} >I was directly inspired by <a href="https://busterbenson.com/the-life-of/buster/" target="_blank">Buster Benson&apos;s project</a> and decided to create my own version. Each square in the grid represents one week of your life, organized into decades. A healthy exercise in momento mori.</p>
+
       {/* The main week grid — 11 decades of 520 weeks each */}
-      <Overview records={(records as LifeRecord[]) ?? []} />
+      <Overview records={resolveRecordWeeks((records as LifeRecord[]) ?? [])} />
     </main>
   );
 }

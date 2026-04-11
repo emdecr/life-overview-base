@@ -38,6 +38,10 @@
   --color-error: #e74c3c;
   --color-logout-border: #ccc;
   --color-logout-bg: transparent;
+
+  /* Links */
+  --color-link: #2563eb;
+  --color-link-hover: #1d4ed8;
 }
 
 /* --- Dark theme --- */
@@ -66,6 +70,9 @@
   --color-error: #ff6b6b;
   --color-logout-border: #555555;
   --color-logout-bg: transparent;
+
+  --color-link: #6fa8ff;
+  --color-link-hover: #93bfff;
 }
 
 /* Reset: remove default browser margins/padding for a clean baseline */
@@ -84,6 +91,17 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Links */
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--color-link-hover);
 }
 
 /* Main container — centers content and limits width.

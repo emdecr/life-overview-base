@@ -8,7 +8,7 @@
  * - Building CSS class strings for week cells
  */
 
-import { parseISO } from "date-fns";
+import { parseISO, parse, isValid } from "date-fns";
 import clsx from "clsx";
 
 // =============================================================================
@@ -109,6 +109,74 @@ export function weekForAge(age: number): number {
   const birthday = new Date(BIRTH_DATE);
   birthday.setFullYear(BIRTH_DATE.getFullYear() + age);
   return weeksBetween(birthday);
+}
+
+// =============================================================================
+// Record Week Resolution
+// =============================================================================
+
+/**
+ * Try to parse a human-readable date string into a Date object.
+ *
+ * Supports common formats:
+ *   - "April 15, 2020" (MMMM d, yyyy)
+ *   - "Apr 15, 2020"   (MMM d, yyyy)
+ *   - "2020-04-15"     (ISO format)
+ *
+ * @returns A valid Date, or null if parsing fails
+ */
+function tryParseDate(dateStr: string): Date | null {
+  // Try ISO format first (most reliable)
+  const iso = parseISO(dateStr);
+  if (isValid(iso)) return iso;
+
+  // Try "April 15, 2020" format
+  const full = parse(dateStr, "MMMM d, yyyy", new Date());
+  if (isValid(full)) return full;
+
+  // Try "Apr 15, 2020" format
+  const short = parse(dateStr, "MMM d, yyyy", new Date());
+  if (isValid(short)) return short;
+
+  return null;
+}
+
+/**
+ * Resolve the `week` value for each record, preferring date-based calculation.
+ *
+ * For each record:
+ *   1. If `date` is parseable → compute week from the date using weeksBetween()
+ *   2. Else if `week` is set (non-null) → use the existing week value
+ *   3. Otherwise → skip the record entirely
+ *
+ * This means you can just set a date when adding records instead of
+ * manually calculating week numbers.
+ */
+export function resolveRecordWeeks<
+  T extends { week: number | null; date: string | null }
+>(records: T[]): (T & { week: number })[] {
+  const resolved: (T & { week: number })[] = [];
+
+  for (const record of records) {
+    // Try to compute week from the date field
+    if (record.date) {
+      const parsed = tryParseDate(record.date);
+      if (parsed) {
+        resolved.push({ ...record, week: weeksBetween(parsed) });
+        continue;
+      }
+    }
+
+    // Fall back to the existing week value if it's set
+    if (record.week != null) {
+      resolved.push(record as T & { week: number });
+      continue;
+    }
+
+    // Neither date nor week — skip this record
+  }
+
+  return resolved;
 }
 
 // =============================================================================
