@@ -1,14 +1,15 @@
 /**
- * WeekBirthday — renders a birthday milestone week (every 52nd week).
+ * WeekBirthday — renders a birthday milestone week.
  *
- * Birthday weeks appear every 52 weeks in the grid (weekId 0, 52, 104, ...).
- * They have a yellow background and display the person's age.
+ * Birthday weeks are positioned using real date math (not weekId % 52),
+ * so they appear at the correct week in the grid without drift.
+ * The `age` prop is pre-computed by the birthday week map in helpers.ts.
  *
  * Special behavior at decade milestones (age 10, 20, 30, ...):
  *   Shows the calendar year alongside the age, e.g. "20 years old in 2024"
  *
  * The `birthYear` prop comes from the NEXT_PUBLIC_BIRTH_DATE env var
- * (parsed in lib/helpers.ts), replacing the old hardcoded `startYear = 2004`.
+ * (parsed in lib/helpers.ts).
  */
 
 import clsx from "clsx";
@@ -20,15 +21,13 @@ export default function WeekBirthday({
   weekId,
   decadeId,
   birthYear,
+  age,
   hasRecords,
 }: WeekBirthdayProps) {
-  // Calculate age: weekId / 52 gives the number of years
-  // (weekId 0 = age 0, weekId 52 = age 1, weekId 520 = age 10, etc.)
-  const yearsOld = weekId / 52;
+  // Calendar year for this birthday
+  const calendarYear = birthYear + age;
 
-  // Calculate the calendar year for decade milestone display.
-  // decadeId 0 = birth decade, decadeId 2 = 20s, etc.
-  // So the age at the start of this decade is decadeId * 10.
+  // Calculate the calendar year at the start of this decade (for milestone display)
   const decadeStartYear = birthYear + decadeId * 10;
 
   // Use a different id prefix if this birthday week also has records,
@@ -39,13 +38,13 @@ export default function WeekBirthday({
     <div className={clsx(weekStyles.week, weekStyles.birthday)} id={id}>
       <span>
         {/* Show "1 year old" vs "X years old" (singular/plural) */}
-        {`${yearsOld} ${yearsOld === 1 ? "year old" : "years old"}`}
+        {`${age} ${age === 1 ? "year old" : "years old"}`}
         {/* At decade milestones (10, 20, 30...), also show the calendar year */}
-        {yearsOld % 10 === 0 ? ` in ${decadeStartYear}` : ""}
+        {age % 10 === 0 ? ` in ${decadeStartYear}` : ""}
       </span>
 
       {/* Small tooltip showing the calendar year on hover */}
-      <Tooltip year={birthYear + yearsOld} />
+      <Tooltip year={calendarYear} />
     </div>
   );
 }

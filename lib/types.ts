@@ -66,6 +66,7 @@ export interface WeekProps {
   decadeId: number;
   todayWeek: number;      // Which week index "today" falls on
   birthYear: number;      // Derived from NEXT_PUBLIC_BIRTH_DATE env var
+  birthdayAge?: number;   // If this week is a birthday, the age (computed from real dates)
 }
 
 /** Props for a week that has record data */
@@ -75,11 +76,12 @@ export interface WeekFilledProps {
   isExampleWeek: boolean; // True if weekId is in the demo range (300-304)
 }
 
-/** Props for a birthday milestone week (every 52nd week) */
+/** Props for a birthday milestone week */
 export interface WeekBirthdayProps {
   weekId: number;
   decadeId: number;
   birthYear: number;
+  age: number;            // The age at this birthday (computed from real date math)
   hasRecords?: boolean;   // True if this birthday week also has record data
 }
 

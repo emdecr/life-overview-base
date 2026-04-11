@@ -60,13 +60,9 @@ export default function AuthButton() {
   // (avoids a flash of "Login" → "Logout" on page load)
   if (loading) return null;
 
-  // Not logged in — show a login link
+  // Not logged in — hide the button (user knows the /login route)
   if (!user) {
-    return (
-      <a href="/login" className={styles.loginLink}>
-        Login
-      </a>
-    );
+    return null;
   }
 
   // Logged in — show email + logout button

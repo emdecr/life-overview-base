@@ -31,6 +31,7 @@ export default function Week({
   decadeId,
   todayWeek,
   birthYear,
+  birthdayAge,
 }: WeekProps) {
   // Check if this week is in the demo/example range (300-304)
   const isExample = isExampleWeek(weekId);
@@ -38,8 +39,9 @@ export default function Week({
   // Check if this is the user's current week
   const isToday = weekId === todayWeek;
 
-  // Check if this is a birthday week (every 52nd week = 1 year)
-  const isBirthday = weekId % 52 === 0;
+  // Check if this is a birthday week (computed from real date math in helpers.ts,
+  // not weekId % 52, which drifts ~0.18 weeks per year)
+  const isBirthday = birthdayAge !== undefined;
 
   // Check if we have any records for this week
   const hasRecords = records.length > 0;
@@ -53,6 +55,7 @@ export default function Week({
           decadeId={decadeId}
           weekId={weekId}
           birthYear={birthYear}
+          age={birthdayAge!}
           hasRecords={true}
         />
         <WeekFilled
@@ -71,6 +74,7 @@ export default function Week({
         decadeId={decadeId}
         weekId={weekId}
         birthYear={birthYear}
+        age={birthdayAge!}
       />
     );
   }
@@ -93,12 +97,14 @@ export default function Week({
 
   // --- Default: Empty week cell ---
   // Most weeks end up here — just a tiny bordered box in the grid.
+  // Past empty weeks get a light gray fill to distinguish from the future.
+  const isPast = weekId < todayWeek;
   const classesString = getWeekClasses(
     weekStyles,
     true,      // isEmpty
     isExample, // isExample (could still be in demo range even without records)
     false      // hasTooltip
-  );
+  ) + (isPast ? ` ${weekStyles.past}` : "");
 
   return <div className={classesString} id={`week-${weekId}`}></div>;
 }

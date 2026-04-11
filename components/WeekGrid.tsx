@@ -23,7 +23,7 @@
 
 import { useMemo } from "react";
 import Week from "./Week";
-import { weeksBetween, BIRTH_YEAR } from "@/lib/helpers";
+import { weeksBetween, BIRTH_YEAR, BIRTHDAY_WEEKS } from "@/lib/helpers";
 import type { WeekGridProps, LifeRecord } from "@/lib/types";
 
 export default function WeekGrid({
@@ -63,6 +63,9 @@ export default function WeekGrid({
     // Look up records for this specific week — O(1) via the Map
     const weekRecords = recordsByWeek.get(weekId) ?? [];
 
+    // Check if this week is a real birthday (using date math, not weekId % 52)
+    const birthdayAge = BIRTHDAY_WEEKS.get(weekId);
+
     weeks.push(
       <Week
         key={`week-key-${weekId}`}
@@ -71,6 +74,7 @@ export default function WeekGrid({
         decadeId={decadeId}
         todayWeek={todayWeek}
         birthYear={BIRTH_YEAR}
+        birthdayAge={birthdayAge}
       />
     );
   }

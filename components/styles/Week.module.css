@@ -48,6 +48,11 @@
   background-color: rgb(255, 246, 193);
 }
 
+/* Empty weeks in the past — light gray fill to distinguish from the future */
+.past {
+  background-color: rgb(232, 232, 232);
+}
+
 /* Example/demo weeks — bright red to show how filled weeks look */
 .exampleBackground {
   background-color: red;
